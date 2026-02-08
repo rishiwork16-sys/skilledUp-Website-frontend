@@ -1,0 +1,38 @@
+export const COURSES = [
+  {
+    id: 1,
+    title: "CareerX: Data Science & GenAI",
+    price: 90000,
+    duration: "9 Months",
+    category: "Data Science & AI",
+    mode: "Online / Offline",
+    slug: "careerx-data-science-genai",
+  },
+  {
+    id: 2,
+    title: "Career Accelerator: Data Science",
+    price: 60000,
+    duration: "6 Months",
+    category: "Data Science & AI",
+    mode: "Online",
+    slug: "career-acc-data-science",
+  },
+  {
+    id: 3,
+    title: "Career Accelerator: Data Analytics",
+    price: 50000,
+    duration: "6 Months",
+    category: "Data Analytics",
+    mode: "Online",
+    slug: "career-acc-data-analytics",
+  },
+  {
+    id: 4,
+    title: "Career Boost Program",
+    price: 30000,
+    duration: "4 Months",
+    category: "Data Analytics",
+    mode: "Online",
+    slug: "career-boost",
+  },
+];

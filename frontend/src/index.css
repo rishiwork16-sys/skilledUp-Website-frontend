@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🔒 FULL HEIGHT + HORIZONTAL OVERFLOW FIX */
+html,
+body,
+#root {
+  /* height: 100%; removed to fix sticky scrolling */
+  width: 100%;
+  /* overflow-x: hidden; 🔥 RIGHT SIDE WHITE GAP FIX */
+}
+
+/* Base body styles */
+body {
+  @apply bg-gray-50 text-gray-800;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🛑 Safety: koi bhi element viewport se bahar na jaye */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* simple animation */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-fade {
+  animation: fade 0.18s ease;
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

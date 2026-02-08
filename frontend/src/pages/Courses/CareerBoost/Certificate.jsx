@@ -1,0 +1,100 @@
+import SectionContainer from "./components/SectionContainer";
+
+const Certificate = ({ showCertificate, setShowCertificate }) => {
+  return (
+    <SectionContainer bgColor="#f3f4f6">
+      <div
+        id="certificate-section"
+        style={{
+          fontFamily: '"Canva Sans","Inter","Poppins",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+        }}
+      >
+        <div
+          className="flex flex-col lg:grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-[40px] items-center"
+        >
+          {/* LEFT SIDE */}
+          <div>
+            <h2 className="text-[32px] lg:text-[42px] font-bold text-[#1f2937] mb-6 lg:mb-[25px]">
+              Certificate Overview
+            </h2>
+
+            <h3 className="text-[18px] lg:text-[20px] font-semibold text-[#1f2937] mb-6 lg:mb-[20px]">
+              Receive an industry-recognized certificate from skilledUp that validates your skills, hands-on experience, and job readiness upon successful course completion.
+            </h3>
+
+            <ul className="space-y-[5px]">
+              <li className="flex items-start gap-[10px] text-[20px] text-[#374151] leading-[1.5]">
+                <span className="mt-[3px] text-[#264f9b] font-bold">✓</span>
+                Industry-aligned skill validation
+              </li>
+
+              <li className="flex items-start gap-[10px] text-[20px] text-[#374151] leading-[1.5]">
+                <span className="mt-[3px] text-[#264f9b] font-bold">✓</span>
+                Project-based learning recognition
+              </li>
+
+              <li className="flex items-start gap-[10px] text-[20px] text-[#374151] leading-[1.5]">
+                <span className="mt-[3px] text-[#264f9b] font-bold">✓</span>
+                Employer-ready credential
+              </li>
+
+              <li className="flex items-start gap-[10px] text-[20px] text-[#374151] leading-[1.5]">
+                <span className="mt-[3px] text-[#264f9b] font-bold">✓</span>
+                Shareable digital certificate
+              </li>
+
+              <li className="flex items-start gap-[10px] text-[20px] text-[#374151] leading-[1.5]">
+                <span className="mt-[3px] text-[#264f9b] font-bold">✓</span>
+                Career & placement value
+              </li>
+            </ul>
+          </div>
+
+          {/* RIGHT SIDE IMAGE */}
+          <div className="text-center">
+            <img
+              src="/images/career_boost_certificate.jpeg"
+              alt="Certificate"
+              className="w-full max-w-[500px] mx-auto cursor-zoom-in"
+              onClick={() => setShowCertificate(true)}
+            />
+            <div
+              className="mt-[10px] text-[16px] lg:text-[18px] text-[#2563eb] font-semibold cursor-pointer"
+              onClick={() => setShowCertificate(true)}
+            >
+              Click to Zoom
+            </div>
+          </div>
+        </div>
+
+        {/* ================= MODAL ================= */}
+        {showCertificate && (
+          <div
+            className="fixed inset-0 bg-[rgba(0,0,0,0.75)] flex items-center justify-center z-[99999] p-4"
+            onClick={() => setShowCertificate(false)}
+          >
+            <div
+              className="w-full max-w-[576px] h-[576px] bg-white rounded-[10px] relative p-[8px] shadow-[0_8px_25px_rgba(0,0,0,0.3)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span
+                className="absolute top-[6px] right-[10px] text-[22px] font-bold text-[#2563eb] cursor-pointer z-[100000]"
+                onClick={() => setShowCertificate(false)}
+              >
+                ✕
+              </span>
+
+              <img
+                src="../images/CareerX.png"
+                alt="Certificate Zoom"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </SectionContainer>
+  );
+};
+
+export default Certificate;
