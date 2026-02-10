@@ -70,11 +70,7 @@ const CourseContent = () => {
         formData.append('description', videoForm.description);
 
         try {
-            await api.post(`/admin/courses/modules/${activeModuleId}/videos`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                }
-            });
+            await api.post(`/admin/courses/modules/${activeModuleId}/videos`, formData);
             alert('Video uploaded successfully!');
             setShowVideoModal(false);
             setVideoForm({ title: '', description: '', file: null });

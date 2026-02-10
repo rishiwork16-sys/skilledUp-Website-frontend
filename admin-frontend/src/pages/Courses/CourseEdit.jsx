@@ -257,9 +257,7 @@ const CourseEdit = () => {
                 if (!m?.imageFile) continue;
                 const uploadData = new FormData();
                 uploadData.append('file', m.imageFile);
-                const resp = await api.post(`/admin/courses/${courseId}/mentors/image`, uploadData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                const resp = await api.post(`/admin/courses/${courseId}/mentors/image`, uploadData);
                 const key = resp?.data?.key;
                 if (key) {
                     mentorsWithKeys[i] = { ...m, imageKey: key, imageFile: null };
@@ -301,9 +299,7 @@ const CourseEdit = () => {
             if (thumbnail) {
                 const uploadData = new FormData();
                 uploadData.append('file', thumbnail);
-                const response = await api.post(`/admin/courses/${courseId}/thumbnail`, uploadData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                const response = await api.post(`/admin/courses/${courseId}/thumbnail`, uploadData);
                 if (response?.data?.thumbnailUrl) {
                     setFormData(prev => ({ ...prev, thumbnailUrl: response.data.thumbnailUrl }));
                     setThumbnailPreviewUrl(response.data.thumbnailUrl);
@@ -315,9 +311,7 @@ const CourseEdit = () => {
             if (introVideo) {
                 const uploadData = new FormData();
                 uploadData.append('file', introVideo);
-                const response = await api.post(`/admin/courses/${courseId}/intro-video`, uploadData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                const response = await api.post(`/admin/courses/${courseId}/intro-video`, uploadData);
                 if (response?.data?.introVideoUrl) {
                     setFormData(prev => ({ ...prev, introVideoUrl: response.data.introVideoUrl }));
                     setIntroVideoPreviewUrl(response.data.introVideoUrl);
@@ -329,9 +323,7 @@ const CourseEdit = () => {
             if (certificate) {
                 const uploadData = new FormData();
                 uploadData.append('file', certificate);
-                const response = await api.post(`/admin/courses/${courseId}/certificate`, uploadData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                const response = await api.post(`/admin/courses/${courseId}/certificate`, uploadData);
                 if (response?.data?.certificateUrl) {
                     setFormData(prev => ({ ...prev, certificateUrl: response.data.certificateUrl }));
                     setCertificatePreviewUrl(response.data.certificateUrl);
@@ -345,9 +337,7 @@ const CourseEdit = () => {
                 toolsCoveredFiles.forEach((file) => {
                     toolsData.append('files', file);
                 });
-                const response = await api.post(`/admin/courses/${courseId}/tools-covered?append=true`, toolsData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                const response = await api.post(`/admin/courses/${courseId}/tools-covered?append=true`, toolsData);
                 if (response?.data?.toolsCovered) {
                     setExistingToolsCovered(response.data.toolsCovered);
                 }

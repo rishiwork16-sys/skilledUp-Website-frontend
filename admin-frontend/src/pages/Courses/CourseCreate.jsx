@@ -200,27 +200,21 @@ const CourseCreate = () => {
             if (thumbnail) {
                 const uploadData = new FormData();
                 uploadData.append('file', thumbnail);
-                await api.post(`/admin/courses/${courseId}/thumbnail`, uploadData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                await api.post(`/admin/courses/${courseId}/thumbnail`, uploadData);
             }
 
             // 3. Upload Intro Video if selected
             if (introVideo) {
                 const uploadData = new FormData();
                 uploadData.append('file', introVideo);
-                await api.post(`/admin/courses/${courseId}/intro-video`, uploadData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                await api.post(`/admin/courses/${courseId}/intro-video`, uploadData);
             }
 
             // 4. Upload Certificate if selected
             if (certificate) {
                 const uploadData = new FormData();
                 uploadData.append('file', certificate);
-                await api.post(`/admin/courses/${courseId}/certificate`, uploadData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                await api.post(`/admin/courses/${courseId}/certificate`, uploadData);
             }
 
             // 5. Upload tools covered logos if selected
@@ -229,9 +223,7 @@ const CourseCreate = () => {
                 toolsCoveredFiles.forEach((file) => {
                     toolsData.append('files', file);
                 });
-                await api.post(`/admin/courses/${courseId}/tools-covered`, toolsData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                await api.post(`/admin/courses/${courseId}/tools-covered`, toolsData);
             }
 
             const mentorsWithKeys = [...mentors];
@@ -240,9 +232,7 @@ const CourseCreate = () => {
                 if (!m?.imageFile) continue;
                 const uploadData = new FormData();
                 uploadData.append('file', m.imageFile);
-                const resp = await api.post(`/admin/courses/${courseId}/mentors/image`, uploadData, {
-                    headers: { 'Content-Type': 'multipart/form-data' }
-                });
+                const resp = await api.post(`/admin/courses/${courseId}/mentors/image`, uploadData);
                 const key = resp?.data?.key;
                 if (key) {
                     mentorsWithKeys[i] = { ...m, imageKey: key, imageFile: null };
