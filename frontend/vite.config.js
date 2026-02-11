@@ -9,15 +9,21 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
-      },
-      '/auth': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
-      },
+                target: 'http://35.154.236.138:8080',
+                changeOrigin: true,
+                secure: false,
+                headers: {
+                    Origin: 'http://35.154.236.138:8080'
+                }
+            },
+            '/auth': {
+                target: 'http://35.154.236.138:8080',
+                changeOrigin: true,
+                secure: false,
+                headers: {
+                    Origin: 'http://35.154.236.138:8080'
+                }
+            },
     },
   },
 })

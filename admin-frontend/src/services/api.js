@@ -8,8 +8,22 @@ const api = axios.create({
 api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
+        const isFormData = typeof FormData !== 'undefined' && config.data instanceof FormData;
+        if (isFormData && config.headers) {
+            if (typeof config.headers.delete === 'function') {
+                config.headers.delete('Content-Type');
+            } else {
+                delete config.headers['Content-Type'];
+                delete config.headers['content-type'];
+            }
+        }
         if (token) {
-            config.headers['Authorization'] = `Bearer ${token}`;
+            if (config.headers && typeof config.headers.set === 'function') {
+                config.headers.set('Authorization', `Bearer ${token}`);
+            } else {
+                config.headers = config.headers || {};
+                config.headers['Authorization'] = `Bearer ${token}`;
+            }
         }
         return config;
     },
